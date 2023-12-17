@@ -13,13 +13,13 @@ function LetterBox({ onInput }) {
     return (
         <View style={styles.outerContainer}>
             <View style={styles.innerContainer}>
-            <TextInput style={styles.textBox}
-                maxLength={1}
-                onChangeText={onChangeText}
-                value={enteredLetter} 
-            />
+                <TextInput style={styles.textBox}
+                    maxLength={1}
+                    onChangeText={onChangeText}
+                    value={enteredLetter}
+                />
             </View>
-            
+
         </View>
     )
 }
@@ -27,17 +27,17 @@ function LetterBox({ onInput }) {
 const styles = StyleSheet.create({
     outerContainer: {
         backgroundColor: '#095b9e',
-        width: 100,
-        height: 100,
+        width: 120,
+        height: 120,
         padding: 5
     },
     innerContainer: {
-        flex:1,
+        flex: 1,
         backgroundColor: '#044479'
     },
     textBox: {
         flex: 1,
-        fontSize: 60,
+        fontSize: 80,
         padding: 15,
         textAlign: 'center',
         color: 'white',
