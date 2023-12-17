@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { TextInput, View, StyleSheet } from "react-native";
 
-function LetterBox({ onInput }) {
+function LetterBox({ text, onInput }) {
 
     const [enteredLetter, setEnteredLetter] = useState('')
 
