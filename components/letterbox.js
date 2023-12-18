@@ -29,7 +29,9 @@ const styles = StyleSheet.create({
         backgroundColor: '#095b9e',
         width: 120,
         height: 120,
-        padding: 5
+        padding: 5,
+        marginLeft:10,
+        marginRight:10
     },
     innerContainer: {
         flex: 1,
