@@ -7,13 +7,17 @@ function LetterHolder() {
 
     const [listOfLetters, setListOfLetters] = useState(['','','','',''])
 
+    function updateLetters(enteredText){
+        setListOfLetters((currentList) => [...listOfLetters, currentList])
+    }
+
     return (
         <View style={styles.holderContainer}>
             <FlatList 
                 horizontal={true} 
                 data={listOfLetters}
                 renderItem={(itemData) => {
-                    return <LetterBox letter={itemData.item} />
+                    return <LetterBox letter={itemData.item} onEntered={updateLetters}/>
                 }}
             />
         </View>

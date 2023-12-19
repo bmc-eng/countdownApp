@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { TextInput, View, StyleSheet } from "react-native";
 
-function LetterBox({ text, onInput }) {
+function LetterBox({ letter, onEntered }) {
 
     const [enteredLetter, setEnteredLetter] = useState('')
 
     function onChangeText(enteredLetter) {
         setEnteredLetter(enteredLetter)
+        onEntered(enteredLetter)
         console.log(enteredLetter)
     }
 
@@ -30,8 +31,8 @@ const styles = StyleSheet.create({
         width: 120,
         height: 120,
         padding: 5,
-        marginLeft:10,
-        marginRight:10
+        marginLeft: 10,
+        marginRight: 10
     },
     innerContainer: {
         flex: 1,
