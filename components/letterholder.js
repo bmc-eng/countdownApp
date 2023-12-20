@@ -5,10 +5,11 @@ import LetterBox from './letterbox'
 
 function LetterHolder() {
 
-    const [listOfLetters, setListOfLetters] = useState(['','','','',''])
+    const [listOfLetters, setListOfLetters] = useState([''])
 
     function updateLetters(enteredText){
-        setListOfLetters((currentList) => [...listOfLetters, currentList])
+        setListOfLetters((currentList) => [...currentList, enteredText])
+        console.log(listOfLetters)
     }
 
     return (

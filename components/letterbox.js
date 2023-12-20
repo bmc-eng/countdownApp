@@ -8,7 +8,7 @@ function LetterBox({ letter, onEntered }) {
     function onChangeText(enteredLetter) {
         setEnteredLetter(enteredLetter)
         onEntered(enteredLetter)
-        console.log(enteredLetter)
+        //console.log(enteredLetter)
     }
 
     return (
