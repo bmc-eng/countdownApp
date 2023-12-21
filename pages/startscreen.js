@@ -4,7 +4,7 @@ import LetterHolder from '../components/letterholder'
 import PrimaryButton from '../components/primarybutton'
 
 
-function StartScreen() {
+function StartScreen({ countdown }) {
     const emptyLetters = [{ letterId: 0, letter: '' },
     { letterId: 1, letter: '' },
     { letterId: 2, letter: '' },
@@ -18,7 +18,7 @@ function StartScreen() {
     const [listOfLetters, setListOfLetters] = useState(emptyLetters)
 
     function updateLetters(enteredText) {
-        console.log("Text from App: " + JSON.stringify(enteredText))
+        //console.log("Text from App: " + JSON.stringify(enteredText))
         const filteredLetters = listOfLetters.filter((box) => box.letterId === enteredText.letterId ? false : true)
         const addedLetters = [...filteredLetters, enteredText]
         const sortedLetters = addedLetters.sort((a, b) => {
@@ -32,7 +32,7 @@ function StartScreen() {
     function startCountdownHandler() {
         const lettersList = listOfLetters.map((elm) => elm.letter)
         const filteredLetters = lettersList.filter((elm) => elm === '' ? false : true)
-        console.log(filteredLetters)
+        countdown(filteredLetters)
     }
 
     function resetHandler() {
