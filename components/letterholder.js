@@ -27,7 +27,7 @@ function LetterHolder() {
 
 const styles = StyleSheet.create({
     holderContainer: {
-        marginTop:120,
+        marginTop:20,
         padding: 12
     }
 })

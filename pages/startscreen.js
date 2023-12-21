@@ -15,7 +15,7 @@ function StartScreen() {
     return (
         <SafeAreaView>
             <View style={styles.imageContainer}>
-                <Image style={styles.image} source={require('../assets/images/countdownTitle.png')} />
+                <Image style={styles.image} source={require('../assets/images/countdown.png')} />
             </View>
             <View style={styles.mainContainer}>
                 <LetterHolder />
@@ -30,17 +30,19 @@ function StartScreen() {
 
 const styles = StyleSheet.create({
     imageContainer: {
-        flex: 1
+        flex: 1,
+        justifyContent:'center',
+        padding:20
+        
     },
     image: {
-        width: 290,
-        height: 190,
-        margin: 20,
-        marginHorizontal: 80,
-        justifyContent: 'center'
+        width: 400,
+        height: 60,
+        
+       
     },
     mainContainer: {
-        flex: 6
+        flex: 8
     },
     buttonContainer: {
         marginHorizontal: 60,
