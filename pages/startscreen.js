@@ -20,7 +20,12 @@ function StartScreen() {
     function updateLetters(enteredText) {
         console.log("Text from App: " + JSON.stringify(enteredText))
         const filteredLetters = listOfLetters.filter((box) => box.letterId === enteredText.letterId ? false: true)
-        setListOfLetters([...filteredLetters, enteredText])
+        const addedLetters = [...filteredLetters, enteredText]
+        const sortedLetters = addedLetters.sort((a,b) => {
+            var x = a.letterId; var y = b.letterId;
+            return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+        })
+        setListOfLetters(sortedLetters)
 
     }
 

@@ -3,11 +3,11 @@ import { TextInput, View, StyleSheet } from "react-native";
 
 function LetterBox({ letterId, letter, onEntered }) {
 
-    const [enteredLetter, setEnteredLetter] = useState('')
+    //const [enteredLetter, setEnteredLetter] = useState('')
 
     function onChangeText(enteredLetter) {
         const changedBox = {"letterId":letterId, "letter": enteredLetter}
-        setEnteredLetter(enteredLetter)
+        //setEnteredLetter(enteredLetter)
         onEntered(changedBox)
         //console.log(id)
     }
@@ -18,7 +18,7 @@ function LetterBox({ letterId, letter, onEntered }) {
                 <TextInput style={styles.textBox}
                     maxLength={1}
                     onChangeText={onChangeText}
-                    value={enteredLetter}
+                    value={letter}
                 />
             </View>
 
