@@ -1,8 +1,17 @@
+import { useState } from 'react'
 import { StyleSheet, View, Image, SafeAreaView } from 'react-native'
 import LetterHolder from '../components/letterholder'
+import PrimaryButton from '../components/primarybutton'
 
 
 function StartScreen() {
+
+    const [listOfLetters, setListOfLetters] = useState([''])
+
+    function startCountdownHandler() {
+
+    }
+
     return (
         <SafeAreaView>
             <View style={styles.imageContainer}>
@@ -10,7 +19,11 @@ function StartScreen() {
             </View>
             <View style={styles.mainContainer}>
                 <LetterHolder />
+                <View style={styles.buttonContainer}>
+                    <PrimaryButton onPress={startCountdownHandler}>Start Countdown</PrimaryButton>
+                </View>
             </View>
+
         </SafeAreaView>
     )
 }
@@ -28,7 +41,12 @@ const styles = StyleSheet.create({
     },
     mainContainer: {
         flex: 6
+    },
+    buttonContainer: {
+        marginHorizontal: 60,
+        marginTop: 20
     }
+
 })
 
 export default StartScreen
