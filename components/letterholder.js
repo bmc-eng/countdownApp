@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { View, FlatList, StyleSheet } from "react-native"
 import LetterBox from './letterbox'
 
@@ -6,14 +5,13 @@ import LetterBox from './letterbox'
 function LetterHolder({updateLetters, letters}) {
 
     
-
     return (
         <View style={styles.holderContainer}>
             <FlatList 
                 horizontal={true} 
                 data={letters}
                 renderItem={(itemData) => {
-                    return <LetterBox letter={itemData.item} onEntered={updateLetters}/>
+                    return <LetterBox letterId={itemData.item.letterId} letter={itemData.item.letter} onEntered={updateLetters}/>
                 }}
             />
         </View>

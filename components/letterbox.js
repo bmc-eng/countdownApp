@@ -1,14 +1,15 @@
 import { useState } from "react";
 import { TextInput, View, StyleSheet } from "react-native";
 
-function LetterBox({ letter, onEntered }) {
+function LetterBox({ letterId, letter, onEntered }) {
 
     const [enteredLetter, setEnteredLetter] = useState('')
 
     function onChangeText(enteredLetter) {
+        const changedBox = {"letterId":letterId, "letter": enteredLetter}
         setEnteredLetter(enteredLetter)
-        onEntered(enteredLetter)
-        //console.log(enteredLetter)
+        onEntered(changedBox)
+        //console.log(id)
     }
 
     return (

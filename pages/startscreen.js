@@ -5,16 +5,32 @@ import PrimaryButton from '../components/primarybutton'
 
 
 function StartScreen() {
+    const emptyLetters = [{ letterId: 0, letter: '' },
+    { letterId: 1, letter: '' },
+    { letterId: 2, letter: '' },
+    { letterId: 3, letter: '' },
+    { letterId: 4, letter: '' },
+    { letterId: 5, letter: '' },
+    { letterId: 6, letter: '' },
+    { letterId: 7, letter: '' },
+    { letterId: 8, letter: '' }]
 
-    const [listOfLetters, setListOfLetters] = useState([''])
+    const [listOfLetters, setListOfLetters] = useState(emptyLetters)
 
     function updateLetters(enteredText) {
-        setListOfLetters((currentList) => [...currentList, enteredText])
-        console.log(listOfLetters)
+        console.log("Text from App: " + JSON.stringify(enteredText))
+        const filteredLetters = listOfLetters.filter((box) => box.letterId === enteredText.letterId ? false: true)
+        setListOfLetters([...filteredLetters, enteredText])
+
     }
 
     function startCountdownHandler() {
         console.log(listOfLetters)
+    }
+
+    function resetHandler() {
+        setListOfLetters(emptyLetters)
+        console.log("reset pressed")
     }
 
     return (
@@ -28,7 +44,8 @@ function StartScreen() {
                     updateLetters={updateLetters}
                 />
                 <View style={styles.buttonContainer}>
-                    <PrimaryButton onPress={startCountdownHandler}>Start Countdown</PrimaryButton>
+                    <PrimaryButton onPress={startCountdownHandler}>Countdown!</PrimaryButton>
+                    <PrimaryButton onPress={resetHandler}>Reset</PrimaryButton>
                 </View>
             </View>
 
