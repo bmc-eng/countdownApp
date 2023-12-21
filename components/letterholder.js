@@ -3,20 +3,15 @@ import { View, FlatList, StyleSheet } from "react-native"
 import LetterBox from './letterbox'
 
 
-function LetterHolder() {
+function LetterHolder({updateLetters, letters}) {
 
-    const [listOfLetters, setListOfLetters] = useState([''])
-
-    function updateLetters(enteredText){
-        setListOfLetters((currentList) => [...currentList, enteredText])
-        console.log(listOfLetters)
-    }
+    
 
     return (
         <View style={styles.holderContainer}>
             <FlatList 
                 horizontal={true} 
-                data={listOfLetters}
+                data={letters}
                 renderItem={(itemData) => {
                     return <LetterBox letter={itemData.item} onEntered={updateLetters}/>
                 }}

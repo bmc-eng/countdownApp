@@ -8,8 +8,13 @@ function StartScreen() {
 
     const [listOfLetters, setListOfLetters] = useState([''])
 
-    function startCountdownHandler() {
+    function updateLetters(enteredText) {
+        setListOfLetters((currentList) => [...currentList, enteredText])
+        console.log(listOfLetters)
+    }
 
+    function startCountdownHandler() {
+        console.log(listOfLetters)
     }
 
     return (
@@ -18,7 +23,10 @@ function StartScreen() {
                 <Image style={styles.image} source={require('../assets/images/countdown.png')} />
             </View>
             <View style={styles.mainContainer}>
-                <LetterHolder />
+                <LetterHolder
+                    letters={listOfLetters}
+                    updateLetters={updateLetters}
+                />
                 <View style={styles.buttonContainer}>
                     <PrimaryButton onPress={startCountdownHandler}>Start Countdown</PrimaryButton>
                 </View>
@@ -31,15 +39,15 @@ function StartScreen() {
 const styles = StyleSheet.create({
     imageContainer: {
         flex: 1,
-        justifyContent:'center',
-        padding:20
-        
+        justifyContent: 'center',
+        padding: 20
+
     },
     image: {
         width: 400,
         height: 60,
-        
-       
+
+
     },
     mainContainer: {
         flex: 8

@@ -4,7 +4,6 @@ function PrimaryButton({ children, onPress }) {
   
   function pressHandler() {
     onPress()
-    console.log("Pressed");
   }
 
   return (
