@@ -19,9 +19,9 @@ function StartScreen() {
 
     function updateLetters(enteredText) {
         console.log("Text from App: " + JSON.stringify(enteredText))
-        const filteredLetters = listOfLetters.filter((box) => box.letterId === enteredText.letterId ? false: true)
+        const filteredLetters = listOfLetters.filter((box) => box.letterId === enteredText.letterId ? false : true)
         const addedLetters = [...filteredLetters, enteredText]
-        const sortedLetters = addedLetters.sort((a,b) => {
+        const sortedLetters = addedLetters.sort((a, b) => {
             var x = a.letterId; var y = b.letterId;
             return ((x < y) ? -1 : ((x > y) ? 1 : 0));
         })
@@ -30,7 +30,9 @@ function StartScreen() {
     }
 
     function startCountdownHandler() {
-        console.log(listOfLetters)
+        const lettersList = listOfLetters.map((elm) => elm.letter)
+        const filteredLetters = lettersList.filter((elm) => elm === '' ? false : true)
+        console.log(filteredLetters)
     }
 
     function resetHandler() {
