@@ -4,10 +4,13 @@ import { StyleSheet, View } from 'react-native';
 
 // Created pages & Components
 import StartScreen from './pages/startscreen';
+import ResultScreen from './pages/resultsscreen';
 
 export default function App() {
 
   const [returnedWords, setReturnedWords] = useState({})
+  const [modalIsVisible, setModalIsVisible] = useState(false)
+  
   // This needs to be changed based on the Load Balancer address set up with the REST API
   const url = "http://countdownLB-470762547.eu-west-2.elb.amazonaws.com:3000/words/";
 
@@ -19,6 +22,7 @@ export default function App() {
         .then(response => response.json())
         .then(json => {
           setReturnedWords(json)
+          setModalIsVisible(true)
           console.log(json)
         })
         .catch(error => {
@@ -28,8 +32,13 @@ export default function App() {
     dictionary()
   }
 
+  function closeResultsHandler() {
+    setModalIsVisible(false)
+  }
+
   return (
     <View style={styles.container}>
+      {modalIsVisible && <ResultScreen visible={modalIsVisible} dictionary={returnedWords} onCancel={closeResultsHandler}/>}
       <StartScreen countdown={getWords} />
       <StatusBar style="auto" />
     </View>
