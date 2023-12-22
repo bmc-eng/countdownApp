@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { View, Modal, Text, StyleSheet, Pressable, FlatList } from 'react-native'
 import ModalButton from '../components/modalbutton'
 
@@ -5,9 +6,11 @@ function ResultScreen({ onCancel, dictionary, visible }) {
 
     //const dictionary = { "definitions": ["1. Relating to the stars. 2. (Astrol.)  Affecting unfavorably by the supposed influence of the stars; baleful. \"Sideral blast.\" Milton.", "See Grizzled.", "Fortified with a fraise.", "Easily broken; brittle; frail; delicate; easily destroyed. The state of ivy is tough, and not fragile. Bacon. Syn. -- Brittle; infirm; weak; frail; frangible; slight. -- Frag\"ile*ly, adv.", "See Slidder. [Obs.] Chaucer.1. One who, or that which, slides; especially, a sliding part of an instrument or machine. 2. (Zoöl.)  The red-bellied terrapin (Pseudemys rugosa). [Local, U. S. ] Slider pump, a form of rotary pump."], "dictionary": ["sideral", "grisled", "fraised", "fragile", "slider"], "userLetters": ["s", "f", "g", "i", "e", "a", "r", "d", "l"] }
     const words = dictionary.dictionary
+    const definitions = dictionary.definition
+    const [definition, setDefinition] = useState('')
 
-    function definitionHandler() {
-        onCancel()
+    function definitionHandler(textButton) {
+        console.log(textButton)
     }
 
     return (
@@ -21,17 +24,16 @@ function ResultScreen({ onCancel, dictionary, visible }) {
                         horizontal={false}
                         data={words}
                         renderItem={(itemData) => {
-                            return (<Pressable onPress={definitionHandler}>
+                            return (
+                            <Pressable onPress={definitionHandler}>
                                 <Text style={styles.wordButton}>{itemData.item}</Text>
-
                             </Pressable>
-                               
                             )
                         }}
                     />
                 </View>
                 <View style={styles.definitionContainer}>
-
+                    <Text style={styles.definitionText}>{definition}</Text>
                 </View>
                 <View style={styles.buttonContainer}>
                     <ModalButton style={styles.closeButton} onPress={onCancel}>Close Results</ModalButton>
@@ -55,16 +57,17 @@ const styles = StyleSheet.create({
     headlineTextContainer: {
         flex: 2,
         marginTop: 60,
-        flexWrap:'wrap',
+        flexWrap: 'wrap',
         flexShrink: 1,
-        flexDirection:'row'
+        flexDirection: 'row'
     },
     dictionaryContainer: {
         flex: 5,
         justifyContent: 'center'
     },
     buttonContainer: {
-        flex: 1
+        flex: 1,
+        marginBottom: 40
     },
     definitionContainer: {
         flex: 5
@@ -80,6 +83,12 @@ const styles = StyleSheet.create({
         fontSize: 25,
         padding: 10
 
+    },
+    definitionText: {
+        color: 'white',
+        fontsize: 20,
+        flexShrink: 1,
+        flexWrap: 'wrap'
     }
 })
 
