@@ -1,12 +1,15 @@
+import { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 // Created pages & Components
 import StartScreen from './pages/startscreen';
 
 export default function App() {
 
-  const url = "http://countdownLB-1981084321.eu-west-2.elb.amazonaws.com:3000/words/";
+  const [returnedWords, setReturnedWords] = useState({})
+  // This needs to be changed based on the Load Balancer address set up with the REST API
+  const url = "http://countdownLB-470762547.eu-west-2.elb.amazonaws.com:3000/words/";
 
   function getWords(letters) {
     const lettersList = url + letters.join(";")
@@ -15,7 +18,8 @@ export default function App() {
       return fetch(lettersList.toLowerCase())
         .then(response => response.json())
         .then(json => {
-          console.log(json.dictionary)
+          setReturnedWords(json)
+          console.log(json)
         })
         .catch(error => {
           console.error(error);
