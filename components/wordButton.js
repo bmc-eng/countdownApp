@@ -6,7 +6,14 @@ function WordButton({ onPress, wordNumber, word }) {
         onPress(wordNumber)
     }
     return (
-        <Pressable onPress={definitionHandler}>
+        <Pressable
+            onPress={definitionHandler}
+            style={({ pressed }) =>
+                pressed
+                    ? [styles.buttonInnerContainer, styles.pressed]
+                    : styles.buttonInnerContainer
+            }
+        >
             <Text style={styles.wordButton}>{word}</Text>
         </Pressable>
     )
@@ -20,7 +27,9 @@ const styles = StyleSheet.create({
         color: 'white',
         fontSize: 25,
         padding: 10
-
-
+    },
+    pressed: {
+        opacity: 0.85
     }
+
 })
