@@ -4,15 +4,17 @@ import { StyleSheet, View } from 'react-native';
 
 // Created pages & Components
 import StartScreen from './pages/startscreen';
-import ResultScreen from './pages/resultsscreen';
+import ResultScreen from './pages/resultscreen';
 
 export default function App() {
 
   const [returnedWords, setReturnedWords] = useState({})
   const [modalIsVisible, setModalIsVisible] = useState(false)
-  
+
   // This needs to be changed based on the Load Balancer address set up with the REST API
   const url = "http://countdownLB-470762547.eu-west-2.elb.amazonaws.com:3000/words/";
+  const dictionary_test = { "definitions": ["1. Relating to the stars. 2. (Astrol.)  Affecting unfavorably by the supposed influence of the stars; baleful. \"Sideral blast.\" Milton.", "See Grizzled.", "Fortified with a fraise.", "Easily broken; brittle; frail; delicate; easily destroyed. The state of ivy is tough, and not fragile. Bacon. Syn. -- Brittle; infirm; weak; frail; frangible; slight. -- Frag\"ile*ly, adv.", "See Slidder. [Obs.] Chaucer.1. One who, or that which, slides; especially, a sliding part of an instrument or machine. 2. (Zoöl.)  The red-bellied terrapin (Pseudemys rugosa). [Local, U. S. ] Slider pump, a form of rotary pump."], "dictionary": ["sideral", "grisled", "fraised", "fragile", "slider"], "userLetters": ["s", "f", "g", "i", "e", "a", "r", "d", "l"] }
+  
 
   function getWords(letters) {
     const lettersList = url + letters.join(";")
@@ -23,10 +25,14 @@ export default function App() {
         .then(json => {
           setReturnedWords(json)
           setModalIsVisible(true)
-          console.log(json)
+          
         })
         .catch(error => {
           console.error(error);
+          
+          // used for testing
+          setReturnedWords(dictionary_test)
+          setModalIsVisible(true)
         });
     }
     dictionary()
