@@ -3,8 +3,8 @@ This is the application that goes with the Countdown REST API. The app allows th
 
 ## Screenshots
 
-![Alt text](/assets/images/mainscreen.png | width=200)
-![Alt text](/assets/images/resultsscreen.png)| width=200)
+<img src="/assets/images/mainscreen.png" width='200' >
+![Alt text](/assets/images/resultsscreen.png | width=200)
 
 ## To run the application in Simulator
 To run the application in the simulator, run:
