@@ -11,6 +11,7 @@ function ResultScreen({ onCancel, visible, dictionary }) {
     const [definition, setDefinition] = useState('')
 
     function definitionHandler(wordNumber) {
+        setDefinition(dictionary[wordNumber].definition)
         console.log(wordNumber)
     }
 
@@ -83,9 +84,10 @@ const styles = StyleSheet.create({
     },
     definitionText: {
         color: 'white',
-        fontsize: 20,
+        fontSize: 20,
         flexShrink: 1,
-        flexWrap: 'wrap'
+        flexWrap: 'wrap',
+        paddingHorizontal:30
     }
 })
 
