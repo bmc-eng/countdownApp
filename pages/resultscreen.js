@@ -1,34 +1,36 @@
 import { useState } from 'react'
 import { View, Modal, Text, StyleSheet, Pressable, FlatList } from 'react-native'
 import ModalButton from '../components/modalbutton'
+import WordButton from '../components/wordButton'
 
 function ResultScreen({ onCancel, visible, dictionary }) {
 
     //const dictionary = { "definitions": ["1. Relating to the stars. 2. (Astrol.)  Affecting unfavorably by the supposed influence of the stars; baleful. \"Sideral blast.\" Milton.", "See Grizzled.", "Fortified with a fraise.", "Easily broken; brittle; frail; delicate; easily destroyed. The state of ivy is tough, and not fragile. Bacon. Syn. -- Brittle; infirm; weak; frail; frangible; slight. -- Frag\"ile*ly, adv.", "See Slidder. [Obs.] Chaucer.1. One who, or that which, slides; especially, a sliding part of an instrument or machine. 2. (Zoöl.)  The red-bellied terrapin (Pseudemys rugosa). [Local, U. S. ] Slider pump, a form of rotary pump."], "dictionary": ["sideral", "grisled", "fraised", "fragile", "slider"], "userLetters": ["s", "f", "g", "i", "e", "a", "r", "d", "l"] }
-    const words = dictionary.dictionary
-    const definitions = dictionary.definition
+    const topWord = dictionary[0]
+    //const definitions = dictionary.definition
     const [definition, setDefinition] = useState('')
 
-    function definitionHandler(textButton, key) {
-        console.log(key)
+    function definitionHandler(wordNumber) {
+        console.log(wordNumber)
     }
 
     return (
         <Modal visible={visible} animationType='slide'>
             <View style={styles.modalContainer}>
                 <View style={styles.headlineTextContainer}>
-                    <Text style={styles.headlineText}>The top word has {words[0].length} letters</Text>
+                    <Text style={styles.headlineText}>The top word has {topWord.word.length} letters</Text>
                 </View>
                 <View style={styles.dictionaryContainer}>
                     <FlatList
                         horizontal={false}
-                        data={words}
-                        keyExtractor={(item, index) => index}
-                        renderItem={(itemData, i) => {
+                        data={dictionary}
+                        renderItem={(itemData) => {
                             return (
-                            <Pressable onPress={definitionHandler} >
-                                <Text style={styles.wordButton}>{itemData.item}</Text>
-                            </Pressable>
+                                <WordButton 
+                                onPress={definitionHandler}
+                                word={itemData.item.word}
+                                wordNumber={itemData.item.id}
+                                />
                             )
                         }}
                     />
@@ -78,12 +80,6 @@ const styles = StyleSheet.create({
         color: 'white',
         fontWeight: 'bold',
         textAlign: 'center'
-    },
-    wordButton: {
-        color: 'white',
-        fontSize: 25,
-        padding: 10
-
     },
     definitionText: {
         color: 'white',

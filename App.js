@@ -29,9 +29,13 @@ export default function App() {
         })
         .catch(error => {
           console.error(error);
-          
+
+          const test = dictionary_test.definitions.map((definition, i) => {
+            return ({'definition': definition, 'word': dictionary_test.dictionary[i], 'id': i})})
+          console.log(test)
           // used for testing
-          setReturnedWords(dictionary_test)
+          setReturnedWords(test)
+
           setModalIsVisible(true)
         });
     }
